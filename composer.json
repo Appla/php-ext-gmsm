@@ -1,0 +1,42 @@
+{
+    "name": "appla/php-ext-gmsm",
+    "description": "High-performance PHP 8.3+ C extension for Chinese Commercial Cryptography (SM2/SM3/SM4, GB/T 32918, 32905, 32907) built on OpenSSL",
+    "type": "php-ext",
+    "license": "MIT",
+    "keywords": [
+        "php",
+        "php-extension",
+        "sm2",
+        "sm3",
+        "sm4",
+        "guomi",
+        "cryptography",
+        "openssl",
+        "libcrypto",
+        "gmt-0009",
+        "gbt-32918"
+    ],
+    "require": {
+        "php": "^8.3"
+    },
+    "replace": {
+        "ext-gmsm": "*"
+    },
+    "php-ext": {
+        "extension-name": "gmsm",
+        "configure-options": [
+            {
+                "name": "enable-gmsm",
+                "description": "Enable GuoMi SM2/SM3/SM4 support",
+                "needs-value": false
+            },
+            {
+                "name": "with-gmsm-openssl",
+                "description": "OpenSSL installation prefix",
+                "needs-value": true
+            }
+        ],
+        "support-zts": true,
+        "support-nts": true
+    }
+}

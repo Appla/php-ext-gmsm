@@ -1,0 +1,19 @@
+// config.w32 for ext/gmsm
+ARG_ENABLE("gmsm", "GuoMi SM2/SM3/SM4 support", "no");
+ARG_WITH("gmsm-openssl", "OpenSSL installation prefix for gmsm", "no");
+
+if (PHP_GMSM != "no") {
+    var gmsm_inc = "", gmsm_lib = "";
+    if (PHP_GMSM_OPENSSL != "no" && PHP_GMSM_OPENSSL != "yes") {
+        /* Search paths directly contain openssl\evp.h and libcrypto.lib. */
+        gmsm_inc = PHP_GMSM_OPENSSL + "\\include;";
+        gmsm_lib = PHP_GMSM_OPENSSL + "\\lib;";
+    }
+    if (CHECK_HEADER_ADD_INCLUDE("openssl/evp.h", "CFLAGS_GMSM", gmsm_inc + PHP_EXTRA_INCLUDES) &&
+        CHECK_LIB("libcrypto.lib", "gmsm", gmsm_lib + PHP_EXTRA_LIBS)) {
+        EXTENSION("gmsm", "gmsm.c", PHP_GMSM_SHARED, "/DZEND_ENABLE_STATIC_TSRMLS_CACHE=1");
+        AC_DEFINE("HAVE_GMSM", 1, "GuoMi SM2/SM3/SM4 support enabled");
+    } else {
+        WARNING("gmsm not enabled; OpenSSL / libcrypto headers or libraries not found");
+    }
+}

@@ -1,0 +1,57 @@
+# C and build artifacts
+.libs/
+*.lo
+*.la
+*.o
+*.so
+*.dll
+*.dylib
+*.a
+modules/
+libs/
+build/
+aclocal.m4
+autom4te.cache/
+compile
+config.guess
+config.h
+config.h.in
+config.log
+config.nice
+config.status
+config.sub
+configure
+configure.ac
+configure.ac.orig
+install-sh
+libtool
+ltmain.sh
+missing
+mkinstalldirs
+Makefile
+Makefile.fragments
+Makefile.global
+Makefile.objects
+run-tests.php
+*.dep
+*.gcno
+*.gcda
+
+# Test artifacts
+tests/*.diff
+tests/*.out
+tests/*.exp
+tests/*.log
+tests/*.sh
+tests/*.mem
+tests/*.php
+!tests/*.phpt
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# Review artifacts
+review/
+
